@@ -366,16 +366,20 @@ function renderHeader() {
                 } else {
                     $("#time-example").html("?");
                 }
-                if(window.parent && window.parent.$ && window.parent.$("#option-show-headers").is(":checked")) {
-                    $("#request-headers-body").show();
-                    $("#response-headers-body").show();
-                }
-                if(window.parent && window.parent.$ && window.parent.$("#option-show-included-files").is(":checked")) {
-                    $("#included-files-init").show();
-                    $("#included-files-example").show();
-                }
-                if(window.parent && window.parent.$ && window.parent.$("#option-show-payload").is(":checked")) {
-                    $("#payload-body").show();
+                try {
+                    if(window.parent && window.parent.$ && window.parent.$("#option-show-headers").is(":checked")) {
+                        $("#request-headers-body").show();
+                        $("#response-headers-body").show();
+                    }
+                    if(window.parent && window.parent.$ && window.parent.$("#option-show-included-files").is(":checked")) {
+                        $("#included-files-init").show();
+                        $("#included-files-example").show();
+                    }
+                    if(window.parent && window.parent.$ && window.parent.$("#option-show-payload").is(":checked")) {
+                        $("#payload-body").show();
+                    }
+                } catch(e) {
+                    // we ignore permission errors when accessing parent frame of different domain
                 }
                 $("DIV.box DIV.body").each(function() {
                     var obj = $(this);
